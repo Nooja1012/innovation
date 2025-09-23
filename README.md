@@ -24,6 +24,5 @@ Projektet benytter følgende libraries:
 - [@react-navigation/native-stack](https://reactnavigation.org/docs/native-stack-navigator)
 
 Installeres med:
-```bash
 npm install @react-navigation/native @react-navigation/native-stack
 expo install react-native-screens react-native-safe-area-context
