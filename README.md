@@ -1,4 +1,5 @@
 Know Before You Go
+
 En react-native app udviklet som en del af godkendelsesopgave 1 i faget Innovation og Ny Teknologi.
 Appen hjælper danske studerende med at finde og dele erfaringer om udviklingsdestinationer.
 
