@@ -4,7 +4,7 @@ import styles from '../styles';
 
 const normalize = (s) => s.trim().toLowerCase();
 
-export default function CountryScreen({ route, navigation }) {
+export default function Country({ route, navigation }) {
   const { continent } = route.params;
 
   const [countries, setCountries] = useState(continent.countries || []);

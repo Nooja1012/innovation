@@ -3,7 +3,7 @@ import { View, Text, FlatList, TextInput, Pressable } from 'react-native';
 import styles from '../styles';
 import { initialReviews } from '../data';
 
-export default function ReviewsScreen({ route }) {
+export default function Reviews({ route }) {
   const { country } = route.params;
   const [reviews, setReviews] = useState(initialReviews[country] || []);
   const [title, setTitle] = useState('');

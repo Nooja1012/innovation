@@ -2,7 +2,7 @@ import { View, Text, Pressable, FlatList } from 'react-native';
 import styles from '../styles';
 import { continents } from '../data';
 
-export default function HomeScreen({ navigation }) {
+export default function Home({ navigation }) {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Vælg kontinent</Text>
