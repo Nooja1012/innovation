@@ -8,4 +8,4 @@ Appen hjælper danske studerende med at finde og dele erfaringer om udvekslingsd
 - Tilføj **nye lande**, hvis de ikke findes på listen
 - Opret reviews med **titel, tekst og rating (1–5)**
 - Navigation mellem tre skærme (views) via **React Navigation**
-- **Global stylefil** for ensartet design
+- **Global stylefil** 
