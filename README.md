@@ -1,15 +1,11 @@
-Know Before You Go
+# Know Before You Go
 
-En react-native app udviklet som en del af godkendelsesopgave 1 i faget Innovation og Ny Teknologi.
-Appen hjælper danske studerende med at finde og dele erfaringer om udviklingsdestinationer.
+En React Native-app udviklet som en del af godkendelsesopgave 1 i faget **Innovation og Ny Teknologi**.  
+Appen hjælper danske studerende med at finde og dele erfaringer om udvekslingsdestinationer.
 
-Funktioner:
-Vælg kontinent -> Vælg land -> læse eller oprette reviews.
-
-Mulighed for at tilføje nye lande, hvis de ikke findes på listen
-
-Mulighed for at oprette reviews med titel, tekst og rating
-
-Navigation mellem tre skærme (views) med React Navigation
-
-Global style fil.
+## Funktioner
+- Vælg **kontinent → land →** læs eller opret **reviews**
+- Tilføj **nye lande**, hvis de ikke findes på listen
+- Opret reviews med **titel, tekst og rating (1–5)**
+- Navigation mellem tre skærme (views) via **React Navigation**
+- **Global stylefil** for ensartet design
