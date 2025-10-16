@@ -1,25 +1,13 @@
+//Maliha har kodet 
+import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { Ionicons } from '@expo/vector-icons';
-import Home from './screens/Home';
-import Country from './screens/Country';
-import Reviews from './screens/Reviews';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import Ionicons from '@expo/vector-icons/Ionicons';
 
-import Stack from './Components/Stack';
-
-const Stack = createNativeStackNavigator();
-
-/*export default function App() {
-  return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name="Home" component={Home} options={{ title: 'Know before you go' }} />
-        <Stack.Screen name="Countries" component={Country} options={{ title: 'Vælg land' }} />
-        <Stack.Screen name="Reviews" component={Reviews} options={{ title: 'Reviews' }} />
-      </Stack.Navigator>
-    </NavigationContainer>
-  );
-}*/
+import Home from '../screens/Home';
+import Country from '../screens/Country';
+import Reviews from '../screens/Reviews';
+import StackNavigator from '../Components/Stack';
 
 const Tab = createBottomTabNavigator();
 
@@ -32,14 +20,20 @@ export default function App() {
           tabBarActiveTintColor: 'green',
           tabBarInactiveTintColor: 'gray',
           tabBarIcon: ({ color, size }) => {
-            const iconMap = { Forside: 'home', Oversigt: 'list', Review: 'settings' };
-            return <Ionicons name={iconMap[route.name] ?? 'ellipse'} size={size} color={color} />;
-          },
-        })}
-      >
-        <Tab.Screen name="Home" component={Home}/>
-        <Tab.Screen name="Countries" component={Country} />
-        <Tab.Screen name="Review" component={Review} />
+            const iconMap = {
+              Home: 'home',
+              Country: 'list',
+              Reviews: 'chatbubbles',};
+            return (
+              <Ionicons
+                name={iconMap[route.name] ?? 'ellipse'}
+                size={size}
+                color={color}/>);
+              },
+               })}>
+        <Tab.Screen name="Home" component={StackNavigator} /> {/* Home → stack */}
+        <Tab.Screen name="Country" component={Country} />
+        <Tab.Screen name="Reviews" component={Reviews} />
       </Tab.Navigator>
     </NavigationContainer>
   );

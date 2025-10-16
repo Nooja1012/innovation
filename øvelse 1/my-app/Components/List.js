@@ -1,6 +1,7 @@
 import React from 'react';
 import { Pressable, Text, StyleSheet } from 'react-native';
 
+//Maliha har kodet 
 //jeg laver en list button, som skal bruges til at lave knapper, for et array af lande, man kan så trykke på knappen og blive videre ført til et review om landet 
 export default function ListButton({ title, onPress }) {
   return (

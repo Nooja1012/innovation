@@ -5,6 +5,7 @@ import Home from './screens/Home';
 import Country from './screens/Country';
 import Reviews from './screens/Reviews';
 
+//Maliha har kodet 
 const Stack = createNativeStackNavigator();
 
 export default function StackNavigator() {
