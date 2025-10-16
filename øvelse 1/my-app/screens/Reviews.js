@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { View, Text, FlatList, TextInput, Pressable } from 'react-native';
 import styles from '../styles';
-import { initialReviews } from '../data';
+import { initialReviews } from '../Components/data';
 
 export default function Reviews({ route }) {
   const { country } = route.params;

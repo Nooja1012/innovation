@@ -1,6 +1,6 @@
 import { View, Text, Pressable, FlatList } from 'react-native';
 import styles from '../styles';
-import { continents } from '../data';
+import { continents } from '../Components/data';
 
 export default function Home({ navigation }) {
   return (
