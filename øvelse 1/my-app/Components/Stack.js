@@ -1,10 +1,10 @@
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import Home from './screens/Home';
-import Country from './screens/Country';
-import Reviews from './screens/Reviews';
-
+// Components/Stack.js
+import Home from '../screens/Home';      
+import Country from '../screens/Country';
+import Reviews from '../screens/Reviews';
 //Maliha har kodet 
 const Stack = createNativeStackNavigator();
 
