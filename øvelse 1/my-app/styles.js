@@ -74,10 +74,98 @@ export default StyleSheet.create({
     color: COLORS.secondary,
     fontWeight: '500',
   },
-
-  errorText: 
-  { color: '#D14343', 
+  errorText: { 
+    color: '#D14343', 
     marginBottom: 8, 
-    fontWeight: '600' },
+    fontWeight: '600',
+  },
 
+  // 🌍 --- Forside styles ---
+  frontContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: COLORS.background,
+    padding: 20,
+  },
+  frontTitle: {
+    fontSize: 28,
+    fontWeight: '700',
+    color: COLORS.primaryDark,
+    marginBottom: 20,
+    textAlign: 'center',
+  },
+  globe: {
+    width: 220,
+    height: 220,
+    borderRadius: 110,
+    marginBottom: 40,
+    borderWidth: 3,
+    borderColor: COLORS.primary,
+  },
+
+  reviewCard: {
+  backgroundColor: '#FFFFFF',
+  borderWidth: 1,
+  borderColor: '#E0E0E0',
+  borderRadius: 12,
+  padding: 14,
+  marginHorizontal: 20,
+  marginBottom: 10,
+},
+reviewHeader: {
+  flexDirection: 'row',
+  justifyContent: 'space-between',
+  alignItems: 'center',
+  marginBottom: 6,
+},
+starsRow: {
+  flexDirection: 'row',
+  alignItems: 'center',
+  marginBottom: 8,
+},
+star: {
+  fontSize: 18,
+  marginRight: 2,
+},
+reviewMeta: {
+  color: '#777777',
+  fontSize: 12,
+},
+reviewBody: {
+  color: '#1A1A1A',
+  fontSize: 15,
+  marginTop: 6,
+},
+row: { flexDirection: 'row', alignItems: 'center' },
+spaceBetween: { justifyContent: 'space-between' },
+chip: {
+  backgroundColor: '#EEF1FF',
+  color: '#5146D9',
+  paddingVertical: 4,
+  paddingHorizontal: 8,
+  borderRadius: 8,
+  fontSize: 12,
+  overflow: 'hidden',
+},
+divider: {
+  height: 1,
+  backgroundColor: '#E0E0E0',
+  marginVertical: 12,
+},
+smallBtn: {
+  backgroundColor: '#FFFFFF',
+  borderWidth: 1,
+  borderColor: '#E0E0E0',
+  paddingVertical: 8,
+  paddingHorizontal: 12,
+  borderRadius: 10,
+  marginRight: 8,
+},
+smallBtnText: {
+  color: '#1A1A1A',
+  fontSize: 14,
+  fontWeight: '600',
+},
 });
+
