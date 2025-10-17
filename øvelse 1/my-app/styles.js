@@ -167,5 +167,150 @@ smallBtnText: {
   fontSize: 14,
   fontWeight: '600',
 },
+
+  /* --- Country Advisories (NYE STYLES) --- */
+  advisoryHeader: {
+    // matcher title/subtitle spacing
+    marginBottom: 8,
+  },
+  searchInline: {
+    // samme visuelle sprog som 'input', men small tweaks til liste-søg
+    borderWidth: 1,
+    borderColor: COLORS.border,
+    backgroundColor: '#fff',
+    borderRadius: 10,
+    paddingVertical: 10,
+    paddingHorizontal: 12,
+    marginBottom: 12,
+    fontSize: 15,
+  },
+  listSeparator: {
+    height: 8,
+  },
+  listRow: {
+    // som 'item', men i række med chevron
+    backgroundColor: COLORS.card,
+    padding: 14,
+    borderRadius: 10,
+    borderWidth: 1,
+    borderColor: COLORS.border,
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  listRowContent: {
+    flex: 1,
+  },
+  listRowTitle: {
+    // matcher itemTitle
+    fontSize: 16,
+    fontWeight: '600',
+    color: COLORS.text,
+  },
+  listRowMeta: {
+    // sekundær tekstlinje (region/subregion)
+    marginTop: 2,
+    color: COLORS.textLight,
+  },
+  listRowHint: {
+    // lille hjælpetekst ("Åbn UM-rejsevejledning")
+    marginTop: 6,
+    fontSize: 12,
+    color: COLORS.secondary,
+    fontWeight: '500',
+  },
+  chevron: {
+    fontSize: 22,
+    color: COLORS.textLight,
+    paddingLeft: 8,
+  },
+  errorBanner: {
+    backgroundColor: '#FDECEC',
+    borderColor: '#FAC5C5',
+    borderWidth: 1,
+    padding: 10,
+    borderRadius: 8,
+    marginBottom: 10,
+  },
+  errorBannerText: {
+    color: '#D14343',
+    fontWeight: '600',
+  },
+
+    /* --- Country Advisories --- */
+    advisoryHeader: {
+      marginBottom: 8,
+    },
+    searchInline: {
+      borderWidth: 1,
+      borderColor: COLORS.border,
+      backgroundColor: '#fff',
+      borderRadius: 10,
+      paddingVertical: 10,
+      paddingHorizontal: 12,
+      marginBottom: 12,
+      fontSize: 15,
+    },
+    listSeparator: {
+      height: 8,
+    },
+    listRow: {
+      backgroundColor: COLORS.card,
+      padding: 14,
+      borderRadius: 10,
+      borderWidth: 1,
+      borderColor: COLORS.border,
+      flexDirection: 'row',
+      alignItems: 'center',
+    },
+    listRowContent: {
+      flex: 1,
+    },
+    listRowTitle: {
+      fontSize: 16,
+      fontWeight: '600',
+      color: COLORS.text,
+    },
+    listRowMeta: {
+      marginTop: 2,
+      color: COLORS.textLight,
+    },
+    listRowHint: {
+      marginTop: 6,
+      fontSize: 12,
+      color: COLORS.secondary,
+      fontWeight: '500',
+    },
+    chevron: {
+      fontSize: 22,
+      color: COLORS.textLight,
+      paddingLeft: 8,
+    },
+    errorBanner: {
+      backgroundColor: '#FDECEC',
+      borderColor: '#FAC5C5',
+      borderWidth: 1,
+      padding: 10,
+      borderRadius: 8,
+      marginBottom: 10,
+    },
+    errorBannerText: {
+      color: '#D14343',
+      fontWeight: '600',
+    },
+  
+    /* --- Country choice modal --- */
+    modalOverlay: {
+      flex: 1,
+      backgroundColor: 'rgba(0,0,0,0.35)',
+      justifyContent: 'center',
+      padding: 24,
+    },
+    modalBox: {
+      backgroundColor: '#fff',
+      borderRadius: 12,
+      padding: 16,
+      gap: 10,
+    },
+  
 });
 

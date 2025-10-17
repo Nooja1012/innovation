@@ -4,6 +4,7 @@ import Home from './screens/Home';
 import Country from './screens/Country';
 import Reviews from './screens/Reviews';
 import Forside from './screens/Forside';
+import CountryAdvisories from './screens/CountryAdvisories';
 
 const Stack = createNativeStackNavigator();
 
@@ -15,6 +16,9 @@ export default function App() {
         <Stack.Screen name="Home" component={Home} options={{ title: 'Know before you go' }} />
         <Stack.Screen name="Countries" component={Country} options={{ title: 'Vælg land' }} />
         <Stack.Screen name="Reviews" component={Reviews} options={{ title: 'Reviews' }} />
+        <Stack.Screen name="CountryAdvisories" component={require('./screens/CountryAdvisories').default} options={{ title: 'Rejsevejledninger' }}
+/>
+
       </Stack.Navigator>
     </NavigationContainer>
   );
