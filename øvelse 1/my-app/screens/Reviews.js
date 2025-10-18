@@ -1,28 +1,15 @@
-// screens/Reviews.js
 import React, { useEffect, useMemo, useState, useCallback } from 'react';
 import {
-  View,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  FlatList,
-  Alert,
-  KeyboardAvoidingView,
-  TouchableWithoutFeedback,
-  Keyboard,
-  Platform,
+  View, Text, TextInput, TouchableOpacity, FlatList, Alert,
+  KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard, Platform,
 } from 'react-native';
 import styles from '../styles';
 import {
-  getReviews,
-  createReview,
-  updateReview,
-  deleteReview,
-  getDeviceUserId,
+  getReviews, createReview, updateReview, deleteReview, getDeviceUserId,
 } from '../storage/reviewStorage';
 
 function Stars({ value = 0, onChange, size = 22 }) {
-  const arr = [1, 2, 3, 4, 5];
+  const arr = [1,2,3,4,5];
   return (
     <View style={styles.starsRow}>
       {arr.map((n) => (
@@ -35,35 +22,39 @@ function Stars({ value = 0, onChange, size = 22 }) {
 }
 
 export default function Reviews({ route }) {
-  const { countryId, countryName } = route.params;
+  const rawId = route?.params?.countryId;
+  const countryId = String(rawId || '').trim().toUpperCase();
+  const countryName = route?.params?.countryName || countryId || 'Land';
 
   const [localUserId, setLocalUserId] = useState(null);
   const [items, setItems] = useState([]);
-  const [avgRating, setAvgRating] = useState(0);
-  const [total, setTotal] = useState(0);
-  const [sort, setSort] = useState('newest'); // 'newest' | 'best'
+  const [avg, setAvg] = useState({ avgUni: 0, avgCountry: 0, total: 0 });
+  const [sort, setSort] = useState('newest');
   const [loading, setLoading] = useState(false);
 
-  const [rating, setRating] = useState(0);
+  const [uniRating, setUniRating] = useState(0);
+  const [countryRating, setCountryRating] = useState(0);
   const [title, setTitle] = useState('');
   const [text, setText] = useState('');
   const [editingId, setEditingId] = useState(null);
   const [error, setError] = useState('');
 
   const canSubmit = useMemo(
-    () => rating >= 1 && title.trim().length >= 3 && text.trim().length >= 10,
-    [rating, title, text]
+    () => uniRating >= 1 && countryRating >= 1 && title.trim().length >= 3 && text.trim().length >= 10,
+    [uniRating, countryRating, title, text]
   );
 
   const load = useCallback(async () => {
+    if (!countryId) return;
     setLoading(true);
     try {
       const data = await getReviews(countryId, sort);
       setItems(data.items);
-      setAvgRating(data.avgRating || 0);
-      setTotal(data.total || 0);
-    } catch {
-      setError('Kunne ikke hente reviews.');
+      setAvg({
+        avgUni: data.avgUni || 0,
+        avgCountry: data.avgCountry || 0,
+        total: data.total || 0,
+      });
     } finally {
       setLoading(false);
     }
@@ -78,29 +69,28 @@ export default function Reviews({ route }) {
   }, [load]);
 
   function resetForm() {
-    setRating(0);
-    setTitle('');
-    setText('');
-    setEditingId(null);
-    setError('');
+    setUniRating(0); setCountryRating(0);
+    setTitle(''); setText('');
+    setEditingId(null); setError('');
   }
 
   async function onSubmit() {
     setError('');
     if (!canSubmit) {
-      setError('Udfyld rating, titel (min. 3 tegn) og tekst (min. 10 tegn).');
+      setError('Udfyld begge ratings (min. 1 stjerne), titel (min. 3) og tekst (min. 10).');
       return;
     }
-
     try {
       if (editingId) {
-        await updateReview(countryId, editingId, { rating, title, text });
+        await updateReview(countryId, editingId, {
+          uniRating, countryRating, title, text,
+        });
       } else {
-        await createReview(countryId, { rating, title, text, userName: 'User' });
+        await createReview(countryId, {
+          uniRating, countryRating, title, text, userName: 'User',
+        });
       }
-      resetForm();
-      await load();
-      Keyboard.dismiss();
+      resetForm(); await load(); Keyboard.dismiss();
     } catch (e) {
       setError(e.message || 'Noget gik galt. Prøv igen.');
     }
@@ -108,26 +98,19 @@ export default function Reviews({ route }) {
 
   function beginEdit(item) {
     setEditingId(item.id);
-    setRating(item.rating);
-    setTitle(item.title);
-    setText(item.text);
+    setUniRating(item.uniRating || 0);
+    setCountryRating(item.countryRating || 0);
+    setTitle(item.title); setText(item.text);
   }
 
   async function onDelete(id) {
     Alert.alert('Slet review', 'Er du sikker på, at du vil slette dette review?', [
       { text: 'Annuller', style: 'cancel' },
-      {
-        text: 'Slet',
-        style: 'destructive',
-        onPress: async () => {
-          try {
-            await deleteReview(countryId, id);
-            await load();
-          } catch (e) {
-            setError(e.message || 'Kunne ikke slette review.');
-          }
-        },
-      },
+      { text: 'Slet', style: 'destructive', onPress: async () => {
+          try { await deleteReview(countryId, id); await load(); }
+          catch (e) { setError(e.message || 'Kunne ikke slette review.'); }
+        } 
+      }
     ]);
   }
 
@@ -141,7 +124,14 @@ export default function Reviews({ route }) {
             {new Date(item.createdAt || Date.now()).toLocaleDateString()}
           </Text>
         </View>
-        <Stars value={item.rating} />
+
+        <View style={[styles.row, { gap: 12 }]}>
+          <Text style={styles.reviewMeta}>Universitet:</Text>
+          <Stars value={item.uniRating || 0} />
+          <Text style={styles.reviewMeta}>Land:</Text>
+          <Stars value={item.countryRating || 0} />
+        </View>
+
         <Text style={styles.reviewBody}>{item.text}</Text>
 
         <View style={[styles.row, styles.spaceBetween, { marginTop: 10 }]}>
@@ -165,22 +155,28 @@ export default function Reviews({ route }) {
     <View style={{ padding: 20, paddingTop: 16 }}>
       <Text style={[styles.title, { fontSize: 26 }]}>Reviews – {countryName}</Text>
 
-      {/* Stats */}
-      {total > 0 && (
-        <View style={[styles.row, styles.spaceBetween, { marginTop: 4 }]}>
-          <View style={styles.row}>
-            <Stars value={Math.round(avgRating)} />
-            <Text style={{ marginLeft: 8 }}>{avgRating.toFixed(1)} / 5</Text>
+      {avg.total > 0 && (
+        <View style={[styles.row, styles.spaceBetween, { marginTop: 6 }]}>
+          <View>
+            <View style={styles.row}>
+              <Text style={styles.subtitle}>Uni:</Text>
+              <Stars value={Math.round(avg.avgUni)} />
+              <Text style={{ marginLeft: 8 }}>{avg.avgUni.toFixed(1)} / 5</Text>
+            </View>
+            <View style={styles.row}>
+              <Text style={styles.subtitle}>Land:</Text>
+              <Stars value={Math.round(avg.avgCountry)} />
+              <Text style={{ marginLeft: 8 }}>{avg.avgCountry.toFixed(1)} / 5</Text>
+            </View>
           </View>
-          <Text style={styles.chip}>{total} i alt</Text>
+          <Text style={styles.chip}>{avg.total} i alt</Text>
         </View>
       )}
 
       <View style={styles.divider} />
 
-      {/* Sortering */}
       <Text style={styles.subtitle}>Sorter</Text>
-      <View style={[styles.row]}>
+      <View style={styles.row}>
         <TouchableOpacity
           style={[styles.smallBtn, { marginRight: 8 }, sort === 'newest' && { borderColor: '#bbb' }]}
           onPress={() => setSort('newest')}
@@ -191,18 +187,22 @@ export default function Reviews({ route }) {
           style={[styles.smallBtn, sort === 'best' && { borderColor: '#bbb' }]}
           onPress={() => setSort('best')}
         >
-          <Text style={styles.smallBtnText}>Bedste</Text>
+          <Text style={styles.smallBtnText}>Bedst (Uni)</Text>
         </TouchableOpacity>
       </View>
 
       <View style={styles.divider} />
 
-      {/* Form */}
       <Text style={styles.subtitle}>{editingId ? 'Redigér dit review' : 'Skriv et review'}</Text>
-      <Stars value={rating} onChange={setRating} size={24} />
+
+      <Text style={styles.reviewMeta}>Universitet</Text>
+      <Stars value={uniRating} onChange={setUniRating} size={24} />
+
+      <Text style={[styles.reviewMeta, { marginTop: 6 }]}>Land</Text>
+      <Stars value={countryRating} onChange={setCountryRating} size={24} />
 
       <TextInput
-        placeholder="Titel (fx: Fantastisk udvekslingsoplevelse)"
+        placeholder="Titel (fx: God udveksling på CBS)"
         value={title}
         onChangeText={setTitle}
         style={styles.input}
