@@ -25,6 +25,7 @@ Seynab – AsyncStorage for login, Favorites-side, bottom navigation
 ## Installation
 ```bash
 git clone https://github.com/Nooja1012/innovation.git
+Branch Final 
 cd innovation
 npm install
 npm install @react-navigation/native @react-navigation/native-stack

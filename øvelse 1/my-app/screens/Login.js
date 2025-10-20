@@ -47,7 +47,7 @@ export default function Login({ navigation }) {
         value={pwd}
         onChangeText={setPwd}
       />
-
+      {/* Knapper til login og gæsteadgang */}
       <Pressable style={globalStyles.btn} onPress={handleLogin}>
         <Text style={globalStyles.btnText}>Log ind</Text>
       </Pressable>

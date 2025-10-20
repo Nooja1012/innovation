@@ -12,6 +12,7 @@ export default function Country({ route, navigation }) {
   const [loading, setLoading] = useState(false);
   const [err, setErr] = useState('');
 
+  // Hent lande fra REST Countries API baseret på valgt kontinent
   useEffect(() => {
     let alive = true;
     (async () => {
@@ -26,7 +27,7 @@ export default function Country({ route, navigation }) {
         if (!r.ok) throw new Error('Kunne ikke hente lande');
         const all = await r.json();
 
-        const mapped = all.map((c) => {
+        const mapped = all.map((c) => { // Kortlæg API data til vores format
           const nameDa = c.translations?.dan?.common || c.name?.common || '';
           return {
             code2: (c.cca2 || '').toUpperCase(),
@@ -38,18 +39,19 @@ export default function Country({ route, navigation }) {
         });
 
         const sorted = mapped.sort((a, b) =>
-          a.name_da.localeCompare(b.name_da, 'da')
+          a.name_da.localeCompare(b.name_da, 'da') // Dansk alfabetisk sortering
         );
         if (alive) setCountries(sorted);
       } catch (e) {
         if (alive) setErr('Kunne ikke hente lande. Tjek internet.');
       } finally {
-        if (alive) setLoading(false);
+        if (alive) setLoading(false); // Stop loading state
       }
     })();
     return () => { alive = false; };
   }, [apiRegion]);
 
+  // Filtrerede data baseret på søgeforespørgsel
   const data = useMemo(() => {
     const s = q.trim().toLowerCase();
     if (!s) return countries;
@@ -76,6 +78,7 @@ export default function Country({ route, navigation }) {
     </TouchableOpacity>
   );
 
+  // Hovedrendering af Country komponenten
   return (
     <View style={styles.container}>
       <Text style={styles.title}>{continentLabel || 'Lande'}</Text>
@@ -92,6 +95,7 @@ export default function Country({ route, navigation }) {
       {loading && <ActivityIndicator style={{ marginTop: 10 }} />}
       {err ? <Text style={styles.errorText}>{err}</Text> : null}
 
+      {/* Liste over lande med søgefunktionalitet */}
       <FlatList
         data={data}
         keyExtractor={(it) => it.code2}
