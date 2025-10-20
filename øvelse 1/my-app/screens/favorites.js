@@ -1,3 +1,8 @@
+/**Favorites.js
+ * Viser brugerens gemte favoritdestinationer
+ * Henter data fra lokal lagring via AsyncStorage
+ */
+
 import React, { useEffect, useState } from 'react';
 import { View, Text, FlatList, StyleSheet } from 'react-native';
 import { loadFavorites } from '../storage/storage';
@@ -5,6 +10,10 @@ import { loadFavorites } from '../storage/storage';
 export default function Favorites() {
   const [items, setItems] = useState([]);
 
+  /**
+   * useEffect hook der loader favoritter ved komponentmount
+   * Immediately Invoked Async Function Expression (IIAFE) pattern
+   */
   useEffect(() => { (async () => setItems(await loadFavorites()))(); }, []);
 
   return (
@@ -23,6 +32,7 @@ export default function Favorites() {
     </View>
   );
 }
+ // Hent favoritter fra AsyncStorage og opdater state
 
 const styles = StyleSheet.create({
   container: {

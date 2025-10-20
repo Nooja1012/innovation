@@ -28,14 +28,14 @@ export default function Profile({ navigation }) {
         style={[globalStyles.btn, globalStyles.btnLarge]} 
         onPress={() => navigation.navigate('MyReviews')}
       >
-        <Text style={globalStyles.btnText}>📚 Mine reviews ({countReviews})</Text>
+        <Text style={globalStyles.btnText}> Mine reviews ({countReviews})</Text>
       </Pressable>
 
       <Pressable 
         style={[globalStyles.btn, globalStyles.btnLarge]} 
         onPress={() => navigation.navigate('Favorites')}
       >
-        <Text style={globalStyles.btnText}>⭐ Favoritter ({countFavs})</Text>
+        <Text style={globalStyles.btnText}> Favoritter ({countFavs})</Text>
       </Pressable>
     </View>
   );

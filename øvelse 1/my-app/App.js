@@ -118,6 +118,7 @@ export default function App() {
           },
         })}
       >
+         {/* Hovedtabs for appens kernefunktioner */}
         <Tab.Screen name="Udforsk" component={ExploreStack} />
         <Tab.Screen name="Vejledninger" component={AdvisoriesStack} />
       </Tab.Navigator>

@@ -1,6 +1,15 @@
+//**myreviews.js
+/**
+ * MyReviews.js
+ * Viser en liste over brugerens egne rejseanmeldelser
+ * Henter data fra lokal lagring via AsyncStorage
+ */ 
+
 import React, { useEffect, useState } from 'react';
 import { View, Text, FlatList, StyleSheet } from 'react-native';
 import { loadMyReviews } from '../storage/storage';
+
+/**MyReviews komponent - Oversigt over brugerens egne anmeldelser*/
 
 export default function MyReviews() {
   const [items, setItems] = useState([]);
@@ -12,9 +21,16 @@ export default function MyReviews() {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Mine reviews</Text>
+      {/*
+        FlatList til effektiv rendering af review-liste
+        - data: Array af review objekter
+        - keyExtractor: Bruger review.id som unik nøgle
+        - ListEmptyComponent: Vises når brugeren ikke har nogen reviews
+        - renderItem: Definerer hvordan hvert review vises
+      */}
       <FlatList
         data={items}
-        keyExtractor={r => r.id}
+        keyExtractor={r => r.id} // Unik ID fra hvert review
         ListEmptyComponent={<Text style={styles.emptyText}>Du har ikke skrevet nogen reviews endnu.</Text>}
         renderItem={({ item }) => (
           <View style={styles.item}>
@@ -22,7 +38,7 @@ export default function MyReviews() {
             <Text>{item.text}</Text>
             <Text style={styles.rating}> {item.rating}/5</Text>
             <Text style={{ opacity: 0.6, marginTop: 4 }}>
-              {new Date(item.createdAt).toLocaleString()}
+              {new Date(item.createdAt).toLocaleString()} 
             </Text>
           </View>
         )}
@@ -31,6 +47,7 @@ export default function MyReviews() {
   );
 }
 
+//styles for MyReviews komponenten
 const styles = StyleSheet.create({
   container: {
     flex: 1,
