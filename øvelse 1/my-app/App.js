@@ -1,3 +1,5 @@
+// App.js final 
+
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -10,10 +12,16 @@ import Country from './screens/Country';
 import Reviews from './screens/Reviews';
 import CountryAdvisories from './screens/CountryAdvisories';
 
+//Maliha har progteret disse skærme til profil og login
+import Login from './screens/Login';
+import Profil from './screens/Profil'; 
+import MyReviews from './screens/myreviews';
+import Favorites from './screens/favorites';
+
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
-/** --- Stack 1: Udforsk (Forside → Kontinenter → Lande → Reviews) --- */
+/** --- Stack 1: Udforsk (Forside → Kontinenter → Lande → Reviews + Profil) --- */
 function ExploreStack() {
   return (
     <Stack.Navigator initialRouteName="Forside">
@@ -46,7 +54,27 @@ function ExploreStack() {
         component={CountryAdvisories}
         options={{ title: 'Rejsevejledninger' }}
       />
-
+      {/* Maliha har programmeret dette*/}
+      <Stack.Screen 
+        name="Login" 
+        component={Login}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen 
+        name="Profil" 
+        component={Profil}
+        options={{ title: 'Min Profil' }}
+      />
+      <Stack.Screen 
+        name="MyReviews" 
+        component={MyReviews}
+        options={{ title: 'Mine Reviews' }}
+      />
+      <Stack.Screen 
+        name="Favorites" 
+        component={Favorites}
+        options={{ title: 'Favoritter' }}
+      />
     </Stack.Navigator>
   );
 }
