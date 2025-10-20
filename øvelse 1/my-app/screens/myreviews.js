@@ -20,7 +20,7 @@ export default function MyReviews() {
           <View style={styles.item}>
             <Text style={{ fontWeight: '700' }}>{item.title} · {item.country}</Text>
             <Text>{item.text}</Text>
-            <Text style={styles.rating}>⭐ {item.rating}/5</Text>
+            <Text style={styles.rating}> {item.rating}/5</Text>
             <Text style={{ opacity: 0.6, marginTop: 4 }}>
               {new Date(item.createdAt).toLocaleString()}
             </Text>

@@ -9,7 +9,7 @@ export default function Favorites() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>⭐ Favoritter</Text>
+      <Text style={styles.title}>Favoritter</Text>
       <FlatList
         data={items}
         keyExtractor={(s, i) => s + i}
