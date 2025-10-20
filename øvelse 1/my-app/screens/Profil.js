@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, Pressable } from 'react-native';
-import { globalStyles } from '../globalstyles';
+import { globalStyles } from '../globalstyle';
 import { loadMyReviews, loadFavorites } from '../storage/storage';
 
 export default function Profile({ navigation }) {
