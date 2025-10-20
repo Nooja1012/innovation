@@ -1,18 +1,20 @@
 // App.js final 
-
+// Hovedindgangspunkt for Know Before You Go applikationen
+// Kombinerer bottom tab navigation med stack navigation for komplekse flows
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons } from '@expo/vector-icons';
 
+// Skærme
 import Forside from './screens/Forside';
 import Home from './screens/Home';
 import Country from './screens/Country';
 import Reviews from './screens/Reviews';
 import CountryAdvisories from './screens/CountryAdvisories';
 
-//Maliha har progteret disse skærme til profil og login
+//Maliha har programmeret disse skærme til profil og login
 import Login from './screens/Login';
 import Profil from './screens/Profil'; 
 import MyReviews from './screens/myreviews';
@@ -22,19 +24,23 @@ const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
 /** --- Stack 1: Udforsk (Forside → Kontinenter → Lande → Reviews + Profil) --- */
+
 function ExploreStack() {
   return (
     <Stack.Navigator initialRouteName="Forside">
+       {/* Forside skærm - appens startpunkt */}
       <Stack.Screen
         name="Forside"
         component={Forside}
-        options={{ headerShown: false }}
+        options={{ headerShown: false }} //skjul header pga. custom design
       />
+       {/* Kontinent valg skærm */}
       <Stack.Screen
         name="Home"
         component={Home}
         options={{ title: 'Vælg kontinent' }}
       />
+      {/* Lande oversigt baseret på valgt kontinent */}
       <Stack.Screen
         name="Country"
         component={Country}
@@ -42,6 +48,7 @@ function ExploreStack() {
           title: route?.params?.continentLabel || 'Lande',
         })}
       />
+       {/* Reviews for specifikt land */}
       <Stack.Screen
         name="Reviews"
         component={Reviews}
@@ -49,12 +56,15 @@ function ExploreStack() {
           title: route?.params?.countryName || 'Reviews',
         })}
       />
+       {/* Rejsevejledninger for land */}
       <Stack.Screen
         name="CountryAdvisories"
         component={CountryAdvisories}
         options={{ title: 'Rejsevejledninger' }}
       />
-      {/* Maliha har programmeret dette*/}
+       {/* PROFIL-RELATEREDE SKÆRME - Udviklet af Maliha */}
+      
+      {/* Login skærm, Review, Profil, Favorites- ingen header for ren login oplevelse */}
       <Stack.Screen 
         name="Login" 
         component={Login}
