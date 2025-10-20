@@ -1,12 +1,12 @@
 import React from 'react';
 import { View, Text, Image, TouchableOpacity, Pressable } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-import { globalStyles } from '../styles/globalStyles';
+import styles from '../styles'; 
 
 export default function Forside({ navigation }) {
   return (
     <View style={styles.frontContainer}>
-      {/* Profil ikon i hjørnet */}
+      {/* Seynab har lavet knappen */}
       <Pressable 
         style={styles.profileIcon}
         onPress={() => navigation.navigate('Login')}

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, Pressable, Alert } from 'react-native';
-import { globalStyles } from '../styles/globalstyles';
+import { globalStyles } from '../globalstyles';
 
 export default function Login({ navigation }) {
   const [email, setEmail] = useState('');

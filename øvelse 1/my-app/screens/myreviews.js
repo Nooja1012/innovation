@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, FlatList, StyleSheet } from 'react-native';
-import { loadMyReviews } from '../Components/storage';
+import { loadMyReviews } from '../storage/storage';
 
 export default function MyReviews() {
   const [items, setItems] = useState([]);
