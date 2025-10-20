@@ -1,12 +1,20 @@
+/* Login.js
+ * Login-skærm til brugerautentifikation og gæsteaccess
+ * Håndterer simpel email/password validering og navigation til profil
+ */
+
+
 import React, { useState } from 'react';
 import { View, Text, TextInput, Pressable, Alert } from 'react-native';
 import { globalStyles } from '../globalstyle';
 
 export default function Login({ navigation }) {
+  // State til email og kodeord inputfelter
   const [email, setEmail] = useState('');
   const [pwd, setPwd] = useState('');
 
   const handleLogin = async () => {
+    // Basic frontend validering - tjekker for tomme felter
     if (!email || !pwd) {
       return Alert.alert('Manglende info', 'Skriv email og kodeord.');
     }
@@ -14,6 +22,7 @@ export default function Login({ navigation }) {
   };
 
   const handleGuest = async () => {
+    // Fortsæt som gæst uden login
     navigation.navigate('Profil');
   };
 

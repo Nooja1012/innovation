@@ -1,4 +1,3 @@
-//**myreviews.js
 /**
  * MyReviews.js
  * Viser en liste over brugerens egne rejseanmeldelser
