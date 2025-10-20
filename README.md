@@ -1,6 +1,6 @@
 # Know Before You Go
 
-En React Native-app udviklet som en del af godkendelsesopgave 1 i faget **Innovation og Ny Teknologi**.  
+En React Native-app udviklet på baggrund af godkendelsesopgave 1 i faget **Innovation og Ny Teknologi**.  
 Appen hjælper studerende med at finde og dele erfaringer om udvekslingsdestinationer.
 
 ## Funktioner
@@ -10,8 +10,15 @@ Appen hjælper studerende med at finde og dele erfaringer om udvekslingsdestinat
 - Navigation mellem tre skærme (views) via **React Navigation**
 - **Global stylefil**
 
-## Demo
-[Demovideoen](https://files.fm/u/r8pswhqsme)
+## Udviklerere af funktionaliteter: 
+Elisabeth – Review-system, API-integration(restcountries), Async Storage for Reviews
+
+Zainab – Rejsevejledninger (UM API’er), søgefunktion
+
+Maliha – Login, Signup, My Reviews
+
+Seynab – AsyncStorage for login, Favorites-side, bottom navigation
+
 
 ## Installation
 ```bash
