@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, Image, TouchableOpacity, Pressable } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-import { globalStyles } from '../globalstyle'; // Ret stien til din fil
+import { globalStyles } from '../globalstyle'; 
 
 export default function Forside({ navigation }) {
   return (
