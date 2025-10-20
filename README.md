@@ -11,5 +11,14 @@ Appen opfylder alle de nye stillede krav.
 - Udenrigsministeriet som API endpoint
 - **Global stylefil**
 
+## Udviklere
+Elisabeth – Review-system, API-integration(restcountries), Async Storage for Reviews
+
+Zainab – Rejsevejledninger (UM API’er), søgefunktion
+
+Maliha – Login, Signup, My Reviews, Profil-button forside
+
+Seynab – AsyncStorage for login, Favorites-side, bottom navigation
+
 ## Demo
 https://youtube.com/shorts/c8MCNCzDIBI?si=BXH9Ie72DnrvaX4F
